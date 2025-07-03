@@ -62,7 +62,7 @@ h1 {
   text-align: center;
 }
 
-input,
+/* input,
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -91,13 +91,13 @@ button:active {
 input,
 button {
   outline: none;
-}
+} */
 
 #greet-input {
   margin-right: 5px;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     color: #f6f6f6;
     background-color: #2f2f2f;
@@ -115,4 +115,4 @@ button {
   button:active {
     background-color: #0f0f0f69;
   }
-}
+} */
