@@ -25,3 +25,6 @@ dist-ssr
 
 # Routify directories
 .routify
+
+# Enviroment Variables
+.env*
