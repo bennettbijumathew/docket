@@ -26,5 +26,8 @@ dist-ssr
 # Routify directories
 .routify
 
-# Enviroment Variables
+# Enviroment variables
 .env*
+
+# Yarn files
+yarn.lock

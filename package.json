@@ -4,7 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "workspaces": [
-    "tauri",
-    "api"
-  ]
+    "app/tauri-frontend",
+    "app/backend"
+  ],
+  "scripts": {
+    "tauri": "yarn workspace tauri-frontend run tauri dev",
+    "web": "yarn workspace tauri-frontend run dev",
+    "backend": "yarn workspace backend run dev"
+  }
 }
