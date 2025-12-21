@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "workspaces": [
-    "app/tauri-frontend",
-    "app/backend"
+    "tauri-frontend",
+    "backend"
   ],
   "scripts": {
     "tauri": "yarn workspace tauri-frontend run tauri dev",
