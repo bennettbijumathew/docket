@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/app.ts"
   },
   "dependencies": {
     "@koa/cors": "^5.0.0",
