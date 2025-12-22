@@ -23,8 +23,8 @@ dist-ssr
 *.sln
 *.sw?
 
-# Routify directories
-.routify
+# Router directories
+.router
 
 # Enviroment variables
 .env*
