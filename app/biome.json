@@ -15,11 +15,17 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
+			"recommended": true,
 			"style": {
 				"noCommonJs": "warn",
-				"noNonNullAssertion": "off"
+				"noNonNullAssertion": "off",
+				"useConst": "off",
+				"useImportType": "off"
 			},
-			"recommended": true
+			"correctness": {
+				"noUnusedVariables": "off",
+				"noUnusedImports": "off"
+			}
 		}
 	},
 	"javascript": {
