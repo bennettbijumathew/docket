@@ -1,0 +1,12 @@
+{
+	"root": false,
+	"extends": "//",
+    "files": {
+        "includes": [
+			"**",
+            "!.routify",
+            "!node_modules",
+            "!src-tauri"
+        ]
+    }
+}
