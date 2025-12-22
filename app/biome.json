@@ -9,8 +9,10 @@
 		"ignoreUnknown": false
 	},
 	"formatter": {
+		"includes": ["!**/*.svelte"],
 		"enabled": true,
-		"indentStyle": "tab"
+		"indentStyle": "tab",
+		"indentWidth": 4
 	},
 	"linter": {
 		"enabled": true,
@@ -32,6 +34,13 @@
 		"formatter": {
 			"quoteStyle": "double",
 			"semicolons": "always"
+		}
+	},
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": "off"
+			}
 		}
 	}
 }

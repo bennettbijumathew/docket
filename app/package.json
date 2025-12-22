@@ -11,7 +11,8 @@
     "tauri": "yarn workspace tauri-frontend run tauri dev",
     "web": "yarn workspace tauri-frontend run dev",
     "backend": "yarn workspace backend run dev",
-    "lint": "biome lint"
+    "lint": "biome lint",
+    "format": "biome lint --write"
   },
   "devDependencies": {
     "@biomejs/biome": "^2.3.10"
