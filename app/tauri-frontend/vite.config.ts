@@ -1,6 +1,7 @@
 import { defineConfig } from "vite";
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 import routify from '@roxi/routify/vite-plugin'
+import { fileURLToPath } from 'node:url';
 
 const host = process.env.TAURI_DEV_HOST;
 
@@ -32,4 +33,7 @@ export default defineConfig(async () => ({
     svelte(),
     routify({/* config */})
   ],
+  envDir: fileURLToPath(
+    new URL("../", import.meta.url)
+  )
 }));
