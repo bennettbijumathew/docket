@@ -7,6 +7,7 @@
     const routes = [
         { name: "Home", link: "/" },
         { name: "Login", link: "/login" },
+        { name: "Forgot", link: "/reset-password" },
         { name: "Example", link: "/auth-example" },
     ]
 </script>

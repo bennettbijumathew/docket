@@ -24,8 +24,6 @@ class AuthState {
                     this.user = null
                     this.loading = false;
                 }
-
-                console.log(this)
             })
         })
     }   

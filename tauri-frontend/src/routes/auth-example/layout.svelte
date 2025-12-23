@@ -5,23 +5,12 @@
 	let { children }: { children: Snippet } = $props();
 </script>
 
-{#if authState.loading === true && authState.ready === false}
-    <div class="p-8">
+<div class="p-4">
+    {#if authState.loading === true && authState.ready === false}
         <p> loading </p>
-    </div>
-{:else if authState.loading === false && authState.ready === false}
-    <div class="p-8">
+    {:else if authState.loading === false && authState.ready === false}
         <p> you are not permitted </p>
-    </div>
-{:else}
-    <div class="p-8 bg-red-100">
+    {:else}
         {@render children()}
-
-
-        <section class="border">
-            <p> Loading: {authState.loading.toString()} </p>
-            <p> User: {authState.user?.toString()} </p>
-            <p> Ready: {authState.ready.toString()} </p>
-        </section>
-    </div>
-{/if}
+    {/if}
+</div>
