@@ -1,12 +1,13 @@
 <script lang="ts">
     import { signOut } from "firebase/auth";
-    import { auth } from "./lib/config/firebase.ts";
+    import { auth } from "@/lib/config/firebase.ts";
 	import { Router } from 'sv-router';
 	import { isActive } from 'sv-router/generated';
 
     const routes = [
         { name: "Home", link: "/" },
         { name: "Login", link: "/login" },
+        { name: "Example", link: "/auth-example" },
     ]
 </script>
 

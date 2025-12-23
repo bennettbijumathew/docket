@@ -1,7 +1,7 @@
 <script lang="ts">
     import { signInWithEmailAndPassword, signOut } from "firebase/auth";
-    import { auth } from "../../lib/config/firebase.ts";
-    import { authState } from "../../stores/auth/state.svelte.ts";
+    import { auth } from "@/lib/config/firebase.ts";
+    import { authState } from "@/stores/auth/state.svelte.ts";
 	import { navigate } from "sv-router/generated";
 
     let email: string = $state("tekkithuan@gmail.com");
@@ -9,7 +9,7 @@
 
     function handleLogIn() {
         signInWithEmailAndPassword(auth, email, password);
-        navigate("/");
+        navigate("/auth-example");
     }
 
     function handleLogOut() {

@@ -21,6 +21,11 @@
 		"noUnusedParameters": true,
 		"noFallthroughCasesInSwitch": true,
 		"allowJs": false,
+        "paths": {
+            // Maps '@' to the absolute path of the 'src' directory. 
+            // This is reflected in the vite.config.ts
+            "@/*": ["src/*"] 
+        }
 	},
 	"include": ["src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
 	"exclude": ["node_modules"]

@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from "firebase/auth"
-import { auth } from "../../lib/config/firebase.ts"
+import { auth } from "@/lib/config/firebase.ts"
 import type { User } from "firebase/auth";
 
 class AuthState {

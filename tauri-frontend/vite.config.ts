@@ -35,4 +35,11 @@ export default defineConfig(async () => ({
         router()
 	],
 	envDir: fileURLToPath(new URL("../", import.meta.url)),
+    resolve: {
+        alias: {
+            // Maps '@' to the absolute path of the 'src' directory. 
+            // This is reflected in the tsconfig.json
+            '@': fileURLToPath(new URL("./src", import.meta.url)), 
+        },
+    },
 }));
