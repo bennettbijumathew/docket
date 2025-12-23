@@ -9,6 +9,10 @@
     <div class="p-8">
         <p> loading </p>
     </div>
+{:else if authState.loading === false && authState.ready === false}
+    <div class="p-8">
+        <p> you are not permitted </p>
+    </div>
 {:else}
     <div class="p-8 bg-red-100">
         {@render children()}
