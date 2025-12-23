@@ -1,7 +1,3 @@
-<script>
-    let text = "welcome!"
-</script>
-
-<main class="bg-red-100 p-4">
-    <h1> home </h1>
+<main class="p-4">
+    <h1 class="font-bold text-lg"> home </h1>
 </main>
