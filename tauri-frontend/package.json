@@ -15,6 +15,7 @@
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-opener": "^2",
     "dotenv-expand": "^8.0.0",
+    "firebase": "^12.7.0",
     "sv-router": "^0.11.1",
     "svelte": "^5.0.0",
     "tailwindcss": "^4.1.18"
