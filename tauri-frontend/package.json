@@ -10,12 +10,15 @@
     "tauri": "tauri"
   },
   "dependencies": {
-    "@roxi/routify": "^3.0.0-next.293",
     "@sveltejs/vite-plugin-svelte": "^6.2.1",
+    "@tailwindcss/vite": "^4.1.18",
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-opener": "^2",
     "dotenv-expand": "^8.0.0",
-    "svelte": "^5.46.0"
+    "firebase": "^12.7.0",
+    "sv-router": "^0.11.1",
+    "svelte": "^5.0.0",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2",
