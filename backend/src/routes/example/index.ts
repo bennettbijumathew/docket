@@ -16,12 +16,19 @@ class ExampleRouter {
     }
 
     async getExample(ctx: Context) {
-        ctx.body = 'Hello World!';
+        const header = ctx.headers["authorization"] ?? "";
+
+        ctx.body = { 
+            data: 'Hello World!',  
+            authorization: header
+        };
         ctx.status = 200;
     }
 
     async getExampleTest(ctx: Context) {
-        ctx.body = 'Example Test!';
+        ctx.body = { 
+            data: 'Example Test!' 
+        };
         ctx.status = 200;
     }
 }

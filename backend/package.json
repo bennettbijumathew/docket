@@ -4,7 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "nodemon src/app.ts"
+    "dev": "nodemon src/app.ts",
+    "test": "mocha test/app.test.ts"
   },
   "dependencies": {
     "@koa/cors": "^5.0.0",
@@ -20,6 +21,10 @@
     "typescript": "^5.9.3"
   },
   "devDependencies": {
+    "@types/chai": "^5.2.3",
+    "@types/mocha": "^10.0.10",
+    "chai": "^6.2.1",
+    "mocha": "^11.7.5",
     "nodemon": "^3.1.11"
   }
 }
