@@ -615,7 +615,7 @@ esbuild@^0.25.0:
     "@esbuild/win32-ia32" "0.25.12"
     "@esbuild/win32-x64" "0.25.12"
 
-esm-env@^1.2.1:
+esm-env@^1.2.1, esm-env@^1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/esm-env/-/esm-env-1.2.2.tgz#263c9455c55861f41618df31b20cb571fc20b75e"
   integrity sha512-Epxrv+Nr/CaL4ZcFGPJIYLWFom+YeV1DqMLHJoEd9SYRxNbaFruBwfEX/kkHUJf55j2+TUbmDcmuilbP1TmXHA==
@@ -804,6 +804,13 @@ source-map-js@^1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.2.1.tgz#1ce5650fddd87abc099eda37dcff024c2667ae46"
   integrity sha512-UXWMKhLOwVKb728IUtQPXxfYU+usdybtUrK/8uGE8CQMvrhOpwvzDBwj0QhSL7MQc7vIsISBG8VQ8+IDQxpfQA==
+
+sv-router@^0.12.0:
+  version "0.12.0"
+  resolved "https://registry.yarnpkg.com/sv-router/-/sv-router-0.12.0.tgz#0ba2e0139f892b2ab1105f3c3876b1c786d72143"
+  integrity sha512-wvaQeL3bG2nJHs/NtGTBJ/U7k/iKjq71vt3HRZwoqKapH87VVR32IPryv2YQC8WQe60ojydjc88sjhD/Wmpi4g==
+  dependencies:
+    esm-env "^1.2.2"
 
 svelte@^5.46.1:
   version "5.46.1"

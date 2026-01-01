@@ -1,7 +1,8 @@
 <script lang="ts">
-    let text = "hello"
+	import { Router } from 'sv-router';
+	import 'sv-router/generated';
 </script>
 
-<main>
-    <p> {text} </p>
+<main>    
+    <Router />
 </main>
