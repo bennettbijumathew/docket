@@ -32,5 +32,6 @@ export default defineConfig(async () => ({
 		svelte(),
         tailwindcss(),
         router()
-    ]
+    ],
+    envDir: "./",
 }));
