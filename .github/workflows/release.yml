@@ -60,6 +60,9 @@ jobs:
       - name: Adding sv-router's generated routes file
         run: yarn run generate-routes
       
+      - name: Checking for type issues in Svelte.
+        run: yarn run svelte-check
+
       # RUST SETUP 
       - name: Setting up the Rust toolchain with Android targets
         uses: dtolnay/rust-toolchain@stable

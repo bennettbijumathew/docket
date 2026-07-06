@@ -34,10 +34,10 @@ jobs:
 
       - name: Adding sv-router's generated routes file
         run: yarn run generate-routes
-        
-      - name: Checking types and building the window's application
-        run: yarn run build
 
+      - name: Checking for type issues in Svelte.
+        run: yarn run svelte-check
+        
       - name: Setting up the Java 21 Environment
         uses: actions/setup-java@v5
         with:
