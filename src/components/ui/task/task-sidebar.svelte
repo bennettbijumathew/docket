@@ -23,7 +23,6 @@
         class="
             inline-flex gap-x-2 p-2 rounded-md transition-colors bg-background hover:bg-background-50 hover:cursor-pointer
             sm:p-1
-            scrollbar-hover:bg-red-500
         "
     >
         <!-- Value of the checkbox updates on pressing the outer button. This works due to the planner being used a svelte state variable  -->
