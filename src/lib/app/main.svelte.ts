@@ -1,9 +1,6 @@
 import { User } from "firebase/auth";
 import { listenForAuth } from "@/lib/auth/service";
 import { startPlannerTasks, stopPlannerTasks } from "@/lib/planner-task/service";
-import { platform as getPlatform, type Platform as PlatformType } from '@tauri-apps/plugin-os';
-
-type Platform = PlatformType | "website"
 
 class App {
     #unSubFromAuth?: () => void;
@@ -32,16 +29,6 @@ class App {
     public stop() {
         stopPlannerTasks()
         this.#unSubFromAuth?.()
-    }
-
-
-    // Gets the current platform of the application
-    get platform (): Platform  {
-        if (typeof window !== "undefined" && "__TAURI_INTERNALS__" in window === false) {
-            return "website"
-        }
-        
-        return getPlatform()
     }
 }
 

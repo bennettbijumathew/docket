@@ -5,6 +5,7 @@
     import { routes } from '@/components/util/routes';
     import { ArrowRight, House, LoaderCircle } from '@lucide/svelte';
     import { app } from '@/lib/app/main.svelte';
+    import { getPlatform } from '@/lib/shared/platform';
 
 	let { children }: { children: Snippet } = $props();
 </script>
@@ -23,11 +24,14 @@
                 toastOptions={{
                     unstyled: true,
                     classes: {
-                        toast: `border-0 flex justify-between items-center gap-x-4 px-3 py-2 rounded-lg shadow-md ${app.platform === "android" ? "mt-8" : ""}`,
+                        toast: `
+                            ${getPlatform() === "android" ? "mt-8" : ""}
+                            border-0 flex justify-between items-center gap-x-4 px-3 py-2 rounded-lg shadow-md 
+                        `,
                         title: 'font-default',
                     }
                 }}
-                offset={app.platform === "android" ? "100px" : undefined}
+                offset={getPlatform() === "android" ? "100px" : undefined}
                 position={"top-center"}
             />
         </main>

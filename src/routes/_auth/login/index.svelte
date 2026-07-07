@@ -4,6 +4,7 @@
     import { Eye, EyeOff, LogIn, UserPlus } from "@lucide/svelte";
     import { authentication } from "@/lib/auth/store.svelte";
     import { app } from "@/lib/app/main.svelte";
+    import { getPlatform } from "@/lib/shared/platform";
 
     // Inputs for logging into the website, changes in the input changes the values.
     let email: string = $state("");
@@ -42,7 +43,7 @@
     <section class="
         p-6 flex flex-col
         justify-between
-        {(app.platform === "android" ) ? "pb-12" : ""}
+        {getPlatform() === "android" ? "pb-12" : ""}
         sm:flex-1 sm:justify-center sm:h-auto
     ">
         <div class="
