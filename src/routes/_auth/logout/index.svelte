@@ -2,7 +2,7 @@
 	import { navigate } from "sv-router/generated";
     import { signOut } from "@/lib/auth/service";
     import { DoorOpen } from "@lucide/svelte";
-    import { app } from "@/lib/app/main";
+    import { getPlatform } from "@/lib/shared/platform";
 
     // This function logs out the account using the controller, and navigates to the home page
     function handleLogOut() {
@@ -28,7 +28,7 @@
     <section class="
         p-6 flex flex-col
         justify-between
-        {(app.platform === "android" ) ? "pb-12" : ""}
+        {getPlatform() === "android" ? "pb-12" : ""}
         sm:flex-1 sm:justify-center sm:h-auto
     ">
         <div class="

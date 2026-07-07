@@ -5,7 +5,7 @@
     import { X, Maximize2, Minimize2, Minus, ArrowLeft, ArrowRight } from '@lucide/svelte';
     import { routes } from "./components/util/routes";
     import { navigate } from "sv-router/generated";
-    import { app } from "@/lib/app/main";
+    import { getPlatform } from "@/lib/shared/platform";
     
     // This tracks the state of the application's window maximized state.
     let maximizedState: boolean = $state(false) 
@@ -17,7 +17,7 @@
     }
 </script>
 
-{#if app.platform === "windows"}
+{#if getPlatform() === "windows"}
     <header 
         data-tauri-drag-region 
         class="
@@ -38,7 +38,9 @@
         </div>
 
         <div class="
-            flex gap-x-2 ml-4 
+            gap-x-2 ml-4
+            hidden
+            sm:flex
             *:h-titlebar *:py-1.5 *:px-2 *:cursor-pointer *:hover:bg-background-100/60 *:text-xs
         ">
             {#each routes as [name, {link}]}
@@ -61,7 +63,10 @@
             </button>
 
             <button 
-                onclick={() => { getCurrentWindow().toggleMaximize(); isWindowMaximized() }}
+                onclick={() => { 
+                    getCurrentWindow().toggleMaximize(); 
+                    isWindowMaximized();
+                }}
             > 
                 {#if maximizedState == true}
                     <Minimize2 class="size-4 text-content-900"/>    
@@ -72,9 +77,9 @@
             
             <button 
                 onclick={getCurrentWindow().close}
-                class="cursor-pointer  px-2 h-6"
+                class="cursor-pointer px-2 h-6 text-content-900 hover:text-red-500"
             > 
-                <X class="size-4 text-content-900 hover:text-red-500"/>    
+                <X class="size-4 "/>    
             </button>
         </div>
     </header>

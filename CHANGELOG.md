@@ -1,15 +1,28 @@
 # docket-todo
 
+## 2.5.2
+
+### Patch Changes
+
+- Fixed application loading to feel more smoother
+- Cleaned some designs of the application
+
+## 2.5.1
+
+### Patch Changes
+
+- Fixed and build pipeline to allow developer to use a consistent yarn version for development
+
 ## 2.5.0
 
 ### Minor Changes
 
-  - Added mass actions for the planner list
-    - A Context Menu is added so that user can do these actions:
-      - Delete
-      - Toggle to Visible State
-      - Toggle to Hidden State
-    - On clicking `CTRL + 'CLICK`, a user can select multiple planners and run actions for the selected planners.
+- Added mass actions for the planner list
+  - A Context Menu is added so that user can do these actions:
+    - Delete
+    - Toggle to Visible State
+    - Toggle to Hidden State
+  - On clicking `CTRL + 'CLICK`, a user can select multiple planners and run actions for the selected planners.
 
 ## 2.4.0
 
@@ -47,7 +60,9 @@
 ### Minor Changes
 
 - Redesigned the task item within the task list
+
   - Changed the task planner list to show 5 planner names with extra being shown on hover.
+
     - This allows planners to be more distinctive.
     - Able to distinguish planners that are concealed / displayed.
 

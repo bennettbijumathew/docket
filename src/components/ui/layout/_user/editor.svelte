@@ -3,7 +3,7 @@
     import { X } from '@lucide/svelte';
     import { searchParams } from 'sv-router';
     import { paramKeys, paramValues } from "@/components/util/routes";
-    import { app } from "@/lib/app/main";
+    import { getPlatform } from "@/lib/shared/platform";
 
     interface LayoutProps {
         children?: Snippet,
@@ -25,7 +25,7 @@
         fixed z-50 w-full h-full
         sm:static sm:w-50 sm:mt-0
         lg:w-90
-        {(app.platform === "windows" || app.platform === "android" ) ? "pt-10 sm:pt-12" : ""}
+        {(getPlatform() === "windows" || getPlatform() === "android" ) ? "pt-10 sm:pt-12" : ""}
     ">
         <div class="flex justify-between items-center mb-6">
             <h2 class="

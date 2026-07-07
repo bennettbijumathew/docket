@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { app } from '@/lib/app/main';
+    import { app } from '@/lib/app/main.svelte';
     import { isAndroidPermissionsGranted } from '@/lib/notification/repository';
     import { getPlatform } from '@/lib/shared/platform';
     import { check } from '@tauri-apps/plugin-updater';
