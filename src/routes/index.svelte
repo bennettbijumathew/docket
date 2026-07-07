@@ -1,14 +1,14 @@
 <script lang="ts">
-    import { paramValues, routes, paramKeys } from "@/components/util/routes";
+    import { sidebar, SIDEBAR_KEY } from "@/components/ui/layout/sidebar/util.svelte";
     import { authentication } from "@/lib/auth/store.svelte";
     import { ArrowRight } from "@lucide/svelte";
-    import { navigate } from "sv-router/generated";
+    import { navigate, p } from "sv-router/generated";
 
     $effect(() => {
         if (authentication.status === "authenticated") {
-            navigate("/task", {
+            navigate("/task", { 
                 search: {
-                    [paramKeys.sidebar]: paramValues.sidebar.collapsed
+                    [SIDEBAR_KEY]: sidebar.isOpen
                 }
             })
         }
@@ -23,7 +23,11 @@
 
     {#if authentication.status === "authenticated"}
         <a
-            href={routes.get("Task")?.link} 
+            href={p("/task", { 
+                search: {
+                    [SIDEBAR_KEY]: sidebar.isOpen
+                }
+            })} 
             aria-label="This is a link to go to the task page"
             class="min-w-26 flex justify-between items-center gap-x-2 p-2 px-4 bg-background-50 hover:bg-background-100 shadow-md rounded-lg cursor-pointer"
         >
@@ -32,7 +36,7 @@
         </a>
     {:else}
         <a
-            href={routes.get("Log In")?.link} 
+            href={p("/login")} 
             aria-label="This is a link to go to the log in page"
             class="min-w-26 flex justify-between items-center gap-x-2 p-2 px-4 bg-background-50 hover:bg-background-100 shadow-md rounded-lg cursor-pointer"
         >

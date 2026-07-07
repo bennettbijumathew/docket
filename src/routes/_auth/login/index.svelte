@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { navigate } from "sv-router/generated";
+	import { navigate, p } from "sv-router/generated";
     import { signInWithEmail } from "@/lib/auth/service";
     import { Eye, EyeOff, LogIn, UserPlus } from "@lucide/svelte";
     import { authentication } from "@/lib/auth/store.svelte";
     import { app } from "@/lib/app/main";
+    import { sidebar, SIDEBAR_KEY } from "@/components/ui/layout/sidebar/util.svelte";
 
     // Inputs for logging into the website, changes in the input changes the values.
     let email: string = $state("");
@@ -17,7 +18,11 @@
         })
 
         if (logInResult === true && authentication.status === "authenticated") {
-            navigate("/task")
+            navigate("/task", { 
+                search: {
+                    [SIDEBAR_KEY]: sidebar.isOpen
+                }
+            })
         }
     }
 
@@ -127,7 +132,7 @@
                 
                 <a 
                     class="min-w-26 flex justify-between items-center gap-x-2 px-2 py-1 bg-background-50 hover:bg-background-100 shadow-md rounded-lg cursor-pointer"
-                    href="/signup"
+                    href={p("/settings")}
                 >
                     <UserPlus class="size-4"/>
                     Sign Up

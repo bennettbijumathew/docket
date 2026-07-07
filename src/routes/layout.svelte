@@ -3,6 +3,7 @@
     import { isAndroidPermissionsGranted } from '@/lib/notification/repository';
     import { getPlatform } from '@/lib/shared/platform';
     import { check } from '@tauri-apps/plugin-updater';
+    import { p } from 'sv-router/generated';
     import { onDestroy, onMount, type Snippet } from 'svelte';  
 
 	let { children }: { children: Snippet } = $props();
@@ -40,7 +41,7 @@
         </div>
 
         <a
-            href="/settings"
+            href={p("/settings")}
             class="bg-background hover:bg-background-50 px-2 py-1 rounded-lg shadow-lg"
         >
             Update
