@@ -1,9 +1,10 @@
 import { type User } from "firebase/auth";
-import { listenAuth, logInWithEmail, logOut, sendVerifyEmail, updateUsername, writeNewEmailAccount } from "./repository.ts";
-import { authentication } from "./store.svelte.ts";
-import { AuthError } from "./type.ts";
-import { isEmailValid, isPasswordValid, isUsernameValid } from "../shared/input-validation.ts";
+import { listenAuth, logInWithEmail, logOut, sendVerifyEmail, updateUsername, writeNewEmailAccount } from "@/lib/auth/repository";
+import { authentication } from "@/lib/auth/store.svelte.ts";
+import { AuthError } from "@/lib/auth/type.ts";
+import { isEmailValid, isPasswordValid, isUsernameValid } from "@/lib/shared/input-validation.ts";
 import { toast } from "svelte-sonner";
+import { app } from "@/lib/app/main.svelte.ts";
 
 
 // This functions returns a listener that calls function based on the user's authentication status.
@@ -16,6 +17,8 @@ type listenAuthArgs = {
 export function listenForAuth({authenticatedFn, unauthenticatedFn}: listenAuthArgs) {
     // The listenAuth function tracks the current user using Firebase's listener. 
     return listenAuth((user) => {
+        app.loading = false
+
         if (user) {
             authentication.status = "authenticated";
             authentication.user = user;
@@ -40,8 +43,8 @@ type emailSignInArgs = {
 
 export async function signInWithEmail({email, password}: emailSignInArgs): Promise<boolean> {
     // This sets the user interface to an unready and loading state without an error.
-    authentication.status = "loading"; 
     authentication.error = ""; 
+    app.loading = true
 
     try {
         // This logs the account using the repository, the auth listener updates. 
@@ -62,8 +65,8 @@ export async function signInWithEmail({email, password}: emailSignInArgs): Promi
 
             throw new AuthError("verification/account-not-verified");
         }
-
-        // Sets user interface's authentication state to authenticated
+        
+        // Sets user interface's state to authenticated.
         authentication.status = "authenticated"; 
 
         // Returns true, as all of the guard clauses have been passed.
@@ -86,6 +89,10 @@ export async function signInWithEmail({email, password}: emailSignInArgs): Promi
 
         // Since an error was encountered, the account creation has failed. 
         return false;
+    }
+    finally {
+        // Once user is logged in or not able to get in, the loading state is removed.
+        app.loading = false
     }
 }
 

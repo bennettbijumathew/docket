@@ -1,4 +1,3 @@
-import { authentication } from "@/lib/auth/store.svelte";
 import { notifications } from "@/lib/notification/service";
 import { listenPlanners } from "@/lib/planner/repository";
 import { planners } from "@/lib/planner/store.svelte"
@@ -16,8 +15,6 @@ export function startPlannerTasks({userId}: startArgs) {
     unSubFromPlannerUpdates?.()
     unSubFromTaskUpdates?.()
     
-    authentication.status = "loading"
-
     unSubFromPlannerUpdates = listenPlanners(userId, (newPlanners) => {
         planners.all = newPlanners;
         
@@ -28,8 +25,6 @@ export function startPlannerTasks({userId}: startArgs) {
             notifications.syncTasks(newTasks)
         })
     })
-
-    authentication.status = "authenticated"
 }
 
 export function stopPlannerTasks() {

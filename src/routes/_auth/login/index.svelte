@@ -3,7 +3,7 @@
     import { signInWithEmail } from "@/lib/auth/service";
     import { Eye, EyeOff, LogIn, UserPlus } from "@lucide/svelte";
     import { authentication } from "@/lib/auth/store.svelte";
-    import { app } from "@/lib/app/main";
+    import { app } from "@/lib/app/main.svelte";
 
     // Inputs for logging into the website, changes in the input changes the values.
     let email: string = $state("");
@@ -118,10 +118,14 @@
                 sm:justify-start sm:flex-row
             ">
                 <button 
-                    class="min-w-26 flex justify-between items-center gap-x-2 p-2 bg-background-100 hover:bg-background-200 shadow-md rounded-lg cursor-pointer"
+                    class="
+                        {app.loading == true ? "animate-pulse" : ""}
+                        min-w-26 flex justify-between items-center gap-x-2 p-2 bg-background-100 hover:bg-background-200 shadow-md rounded-lg cursor-pointer
+                    "
                     type="submit"
                 >
                     <LogIn class="size-4"/>
+
                     Log In
                 </button>
                 
