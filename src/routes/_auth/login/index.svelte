@@ -3,8 +3,9 @@
     import { signInWithEmail } from "@/lib/auth/service";
     import { Eye, EyeOff, LogIn, UserPlus } from "@lucide/svelte";
     import { authentication } from "@/lib/auth/store.svelte";
-    import { app } from "@/lib/app/main";
     import { sidebar, SIDEBAR_KEY } from "@/components/ui/layout/sidebar/util.svelte";
+    import { getPlatform } from "@/lib/shared/platform";
+    import { app } from "@/lib/app/main.svelte";
 
     // Inputs for logging into the website, changes in the input changes the values.
     let email: string = $state("");
@@ -47,7 +48,7 @@
     <section class="
         p-6 flex flex-col
         justify-between
-        {(app.platform === "android" ) ? "pb-12" : ""}
+        {getPlatform() === "android" ? "pb-12" : ""}
         sm:flex-1 sm:justify-center sm:h-auto
     ">
         <div class="
@@ -123,10 +124,14 @@
                 sm:justify-start sm:flex-row
             ">
                 <button 
-                    class="min-w-26 flex justify-between items-center gap-x-2 p-2 bg-background-100 hover:bg-background-200 shadow-md rounded-lg cursor-pointer"
+                    class="
+                        {app.loading == true ? "animate-pulse" : ""}
+                        min-w-26 flex justify-between items-center gap-x-2 p-2 bg-background-100 hover:bg-background-200 shadow-md rounded-lg cursor-pointer
+                    "
                     type="submit"
                 >
                     <LogIn class="size-4"/>
+
                     Log In
                 </button>
                 
