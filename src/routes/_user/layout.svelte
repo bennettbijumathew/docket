@@ -3,7 +3,6 @@
     import { authentication } from '@/lib/auth/store.svelte';
 	import { type Snippet } from 'svelte';  
     import { Toaster } from 'svelte-sonner'
-    import { routes } from '@/components/util/routes';
     import { ArrowRight, House, LoaderCircle } from '@lucide/svelte';
     import { app } from '@/lib/app/main';
 
