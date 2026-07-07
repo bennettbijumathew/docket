@@ -101,7 +101,7 @@
         />
 
         <div class="flex-3 text-left justify-items-start"> 
-            <h2 class=""> {task.name} </h2>
+            <h2 class="font-bold"> {task.name} </h2>
             <p class="text-sm"> {formatLongDate(task.dueDate)}</p>
         </div>
 

@@ -18,6 +18,10 @@
     sidebarRoutes.set("Home", routes.get("Home")!)
     sidebarRoutes.set("Planner", routes.get("Planner")!)
     sidebarRoutes.set("Task", routes.get("Task")!)
+
+    if (getPlatform() == "windows") {
+        sidebarRoutes.set("Settings", routes.get("Settings")!)
+    }
 </script>
 
 <section 
