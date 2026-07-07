@@ -22,9 +22,11 @@
 
 <section 
     class="
-        {getPlatform() == "windows" ? "pt-titlebar" : "pt-4"} 
+        {getPlatform() == "windows" ? "pt-titlebar" : ""} 
+        {getPlatform() == "android" ? "pt-safe" : ""} 
+        {(getPlatform() != "android" || getPlatform() != "windows" ) ? "pt-4" : ""} 
         {sidebar.isOpen ? 'w-75 sm:w-94' : 'w-0'}
-        box-border bg-background flex flex-col justify-between h-full overflow-hidden transition-[width] duration-300 pt-safe
+        box-border bg-background flex flex-col justify-between h-full overflow-hidden transition-[width] duration-300
         fixed top-0 left-0 z-10 
         lg:relative lg:flex-none
     "
