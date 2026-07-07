@@ -1,15 +1,24 @@
 # docket-todo
 
+## 2.5.1
+
+### Patch Changes
+
+- Refactored settings page to include a new accounts section
+  - New settings page is under the /user group which prevents non-users from adjusting the settings. 
+  - Settings now accommodate multiple options such as 'Update' and the new 'Accounts' options.
+- Removed unused layout files
+
 ## 2.5.0
 
 ### Minor Changes
 
-  - Added mass actions for the planner list
-    - A Context Menu is added so that user can do these actions:
-      - Delete
-      - Toggle to Visible State
-      - Toggle to Hidden State
-    - On clicking `CTRL + 'CLICK`, a user can select multiple planners and run actions for the selected planners.
+- Added mass actions for the planner list
+  - A Context Menu is added so that user can do these actions:
+    - Delete
+    - Toggle to Visible State
+    - Toggle to Hidden State
+  - On clicking `CTRL + 'CLICK`, a user can select multiple planners and run actions for the selected planners.
 
 ## 2.4.0
 
@@ -47,7 +56,9 @@
 ### Minor Changes
 
 - Redesigned the task item within the task list
+
   - Changed the task planner list to show 5 planner names with extra being shown on hover.
+
     - This allows planners to be more distinctive.
     - Able to distinguish planners that are concealed / displayed.
 
