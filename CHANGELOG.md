@@ -1,5 +1,12 @@
 # docket-todo
 
+## 2.5.3
+
+- Refactored settings page to include a new accounts section
+  - New settings page is under the /user group which prevents non-users from adjusting the settings. 
+  - Settings now accommodate multiple options such as 'Update' and the new 'Accounts' options.
+- Removed unused layout files
+
 ## 2.5.2
 
 ### Patch Changes

@@ -1,8 +1,8 @@
 <script lang="ts">
+	import { p } from "sv-router/generated";
     import { authentication } from '@/lib/auth/store.svelte';
 	import { type Snippet } from 'svelte';  
     import { Toaster } from 'svelte-sonner'
-    import { routes } from '@/components/util/routes';
     import { ArrowRight, House, LoaderCircle } from '@lucide/svelte';
     import { app } from '@/lib/app/main.svelte';
     import { getPlatform } from '@/lib/shared/platform';
@@ -43,12 +43,12 @@
 
             <p class="min-w-80 text-center"> Create a new account or sign into your account. </p>
 
-            <a
-                href={routes.get("Log In")?.link} 
-                aria-label="This is a link to go to the home page"
-                class="mt-4 flex justify-between items-center gap-x-4 p-2 bg-background-50 hover:bg-background-100 shadow-md rounded-lg cursor-pointer"
-            >
-                Log In
+        <a
+            href={p("/login")} 
+            aria-label="This is a link to go to the home page"
+            class="mt-4 flex justify-between items-center gap-x-4 p-2 bg-background-50 hover:bg-background-100 shadow-md rounded-lg cursor-pointer"
+        >
+            Log In
 
                 <ArrowRight class="size-4"/>
             </a>
@@ -62,7 +62,7 @@
             <p class="min-w-80 text-center"> You have faced an error: {authentication.error} </p>
 
             <a
-                href={routes.get("Home")?.link} 
+                href={p("/")} 
                 aria-label="This is a link to go to the home page"
                 class="mt-4 flex justify-between items-center gap-x-4 p-2 bg-background-50 hover:bg-background-100 shadow-md rounded-lg cursor-pointer"
             >

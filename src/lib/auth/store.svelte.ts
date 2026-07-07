@@ -22,13 +22,14 @@ export class AuthStore {
         return this.#user.uid;
     }
 
-    get user(): {id: string} | null {
+    get user(): {id: string, email: string} | null {
         if (this.#user === null) {
             return null;
         }
         
         return { 
-            id: this.#user.uid
+            id: this.#user.uid,
+            email: this.#user.email ?? ""
         };
     }
 
