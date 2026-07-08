@@ -39,7 +39,7 @@
         <input 
             type="text"
             class="
-                flex-1 px-1 rounded-lg hover:bg-background-100 outline-background-400
+                flex-1 px-1.5 rounded-lg bg-background-100 hover:bg-background-200 outline-background-400
                 h-10 order-first
                 sm:h-8 sm:order-last
             "
@@ -51,7 +51,7 @@
 
         <button 
             class="
-                flex items-center justify-center bg-background-200 hover:bg-background-300 rounded-lg 
+                flex items-center justify-center bg-background-200 hover:bg-background-300 outline-background-400 rounded-lg 
                 size-10 order-last
                 sm:size-8 sm:order-first
             "
@@ -71,8 +71,8 @@
             bind:value={newTask.planners}
             triggerClass="                    
                 bg-background-100 hover:bg-background-200 outline-background-400 rounded-lg py-1 px-2 
-                h-14 w-48 flex-auto
-                sm:h-8
+                h-14 flex-auto text-sm
+                sm:h-8 sm:text-md
             "
         />
 
@@ -80,8 +80,9 @@
             bind:value={newTask.dueDate}
             triggerClass="
                 bg-background-100 hover:bg-background-200 outline-background-400 rounded-lg py-1 px-2
-                h-14 w-48
-                sm:h-8
+                h-14 w-48 text-sm
+                sm:h-8 sm:text-md
+                
             "
         />
     </div>
