@@ -3,24 +3,38 @@
 // with the repository function while handling validation, toasts and errors.
 
 import { ColorKey } from "@/components/util/color";
-import { deletePlanner, updatePlannerColor, updatePlannerName, updatePlannerVisibility, writeNewPlanner } from "@/lib/planner/repository";
+import { deletePlanner, MAX_STORED_PLANNERS, updatePlannerColor, updatePlannerName, updatePlannerVisibility, writeNewPlanner } from "@/lib/planner/repository";
 import { toast } from "svelte-sonner";
 import { authentication } from "@/lib/auth/store.svelte";
 import { NewPlannerData } from "@/lib/planner/type";
-import { planners } from "./store.svelte";
+import { planners } from "@/lib/planner/store.svelte";
+import { FirestoreError } from "firebase/firestore";
+import { FirebaseError } from "firebase/app";
 
 // This function deletes the planner by using the repository.
-export function createPlanner(newPlanner: NewPlannerData): void {
-    if (newPlanner.name.trim() == "") {
-        toast.error("To create a new task, the title requires a non-empty field")
-        return 
+export async function createPlanner(newPlanner: NewPlannerData): Promise<void> {
+    try {
+        if (planners.all.length + 1 > MAX_STORED_PLANNERS) {
+            throw new Error(`You can't create more planner as you have exceeded the limit of ${MAX_STORED_PLANNERS} planners`)
+        }
+        else if (newPlanner.name.trim() == "") {
+            throw new Error("To create a new planner, the title requires a non-empty field")
+        }
+        
+        await writeNewPlanner({
+            name: newPlanner.name,
+            users: newPlanner.users,
+            color: newPlanner.color
+        });
     }
-
-    writeNewPlanner({
-        name: newPlanner.name,
-        users: newPlanner.users,
-        color: newPlanner.color
-    });
+    catch (error) {
+        if (error instanceof FirestoreError || error instanceof FirebaseError ) {
+            toast.error("Faced an error with creating a new planner")
+        }
+        else if (error instanceof Error) {
+            toast.error(error.message)
+        }
+    }
 }
 
 
@@ -29,22 +43,29 @@ type deleteArgs = {
     id: string
 }
 
-export function removePlanner({id}: deleteArgs): void {
-    if (planners.all.length - 1 <= 0) {
-        toast.error("Could not delete the planner as there is not enough planners");
-        return;
+export async function removePlanner({id}: deleteArgs): Promise<void> {
+    try {
+        if (planners.all.length - 1 <= 0) {
+            throw new Error("Could not delete the planner as there is not enough planners");
+        }
+        else if (id.trim() === "") {
+            throw new Error("Could not delete the planner");
+        }
+        
+        await deletePlanner({
+            id: id
+        });
+        
+        toast.success("Planner has been deleted");
     }
-
-    if (id.trim() === "") {
-        toast.error("Could not delete the planner");
-        return;
+    catch (error) {
+        if (error instanceof FirestoreError || error instanceof FirebaseError ) {
+            toast.error("Faced an error with deleting the planner")
+        }
+        else if (error instanceof Error) {
+            toast.error(error.message)
+        }
     }
-
-    deletePlanner({
-        id: id
-    });
-    
-    toast.success("Task has been deleted");
 }
 
 
@@ -54,21 +75,28 @@ type editNameArgs = {
     name: string
 }
 
-export function editPlannerName({id, name}: editNameArgs): void {
-    if (id.trim() === "") {
-        toast.error("Can't edit the planner name");
-        return;
+export async function editPlannerName({id, name}: editNameArgs): Promise<void> {
+    try {
+        if (id.trim() === "") {
+            throw new Error("Can't edit the planner name");
+        }
+        else if (name.trim() === "") {
+            throw new Error("You need to add an non-empty value for planner name");
+        }
+        
+        await updatePlannerName({
+            id: id,
+            name: name
+        });
     }
-
-    if (name.trim() === "") {
-        toast.error("You need to add an non-empty value for planner name");
-        return;
+    catch (error) {
+        if (error instanceof FirestoreError || error instanceof FirebaseError ) {
+            toast.error("Faced an error with editing the planner's name")
+        }
+        else if (error instanceof Error) {
+            toast.error(error.message)
+        }
     }
-
-    updatePlannerName({
-        id: id,
-        name: name
-    });
 }
 
 
@@ -78,16 +106,25 @@ type editColorArgs = {
     color: ColorKey
 }
 
-export function editPlannerColor({id, color}: editColorArgs): void {
-    if (id.trim() === "") {
-        toast.error("Can't edit the planner name");
-        return;
-    }
+export async function editPlannerColor({id, color}: editColorArgs): Promise<void> {
+    try {
+        if (id.trim() === "") {
+            throw new Error("Can't edit the planner name");
+        }
 
-    updatePlannerColor({
-        id: id,
-        color: color
-    });
+        await updatePlannerColor({
+            id: id,
+            color: color
+        });
+    }
+    catch (error) {
+        if (error instanceof FirestoreError || error instanceof FirebaseError ) {
+            toast.error("Faced an error with editing the planner's color")
+        }
+        else if (error instanceof Error) {
+            toast.error(error.message)
+        }
+    }
 }
 
 
@@ -97,15 +134,24 @@ type editVisibleArgs = {
     visibility: boolean
 }
 
-export function editPlannerVisibility({id, visibility}: editVisibleArgs): void {
-    if (id.trim() === "") {
-        toast.error("Can't edit the visibility of the planner");
-        return;
-    }
+export async function editPlannerVisibility({id, visibility}: editVisibleArgs): Promise<void> {
+    try {
+        if (id.trim() === "") {
+            throw new Error("Can't edit the visibility of the planner");
+        }
 
-    updatePlannerVisibility({
-        id: id, 
-        userId: authentication.userId, 
-        visibility: visibility
-    })
+        await updatePlannerVisibility({
+            id: id, 
+            userId: authentication.userId, 
+            visibility: visibility
+        })
+    }
+    catch (error) {
+        if (error instanceof FirestoreError || error instanceof FirebaseError ) {
+            toast.error("Faced an error with editing the planner's visibility state")
+        }
+        else if (error instanceof Error) {
+            toast.error(error.message)
+        }
+    }
 }

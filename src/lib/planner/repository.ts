@@ -136,3 +136,5 @@ export async function updatePlannerVisibility({id, userId, visibility}: updateVi
         throw error
     }
 }
+
+export const MAX_STORED_PLANNERS = 30
