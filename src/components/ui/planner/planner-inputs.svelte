@@ -14,15 +14,17 @@
     })
    
     // This is a function for adding a new planner and resetting the inputs
-    function addNewPlanner(): void {
+    async function addNewPlanner(): Promise<void> {
         newPlanner.users = {
             [authentication.userId]: true
         }
 
-        createPlanner(newPlanner)
+        const isCreated = await createPlanner(newPlanner)
         
-        newPlanner.name = ""
-        newPlanner.users = {}
+        if (isCreated == true) {
+            newPlanner.name = ""
+            newPlanner.users = {}
+        }
     }
 </script>
         

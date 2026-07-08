@@ -12,7 +12,7 @@ import { FirestoreError } from "firebase/firestore";
 import { FirebaseError } from "firebase/app";
 
 // This function deletes the planner by using the repository.
-export async function createPlanner(newPlanner: NewPlannerData): Promise<void> {
+export async function createPlanner(newPlanner: NewPlannerData): Promise<boolean> {
     try {
         if (planners.all.length + 1 > MAX_STORED_PLANNERS) {
             throw new Error(`You can't create more planner as you have exceeded the limit of ${MAX_STORED_PLANNERS} planners`)
@@ -26,6 +26,8 @@ export async function createPlanner(newPlanner: NewPlannerData): Promise<void> {
             users: newPlanner.users,
             color: newPlanner.color
         });
+
+        return true;
     }
     catch (error) {
         if (error instanceof FirestoreError || error instanceof FirebaseError ) {
@@ -34,6 +36,8 @@ export async function createPlanner(newPlanner: NewPlannerData): Promise<void> {
         else if (error instanceof Error) {
             toast.error(error.message)
         }
+
+        return false;
     }
 }
 

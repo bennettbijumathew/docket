@@ -6,7 +6,7 @@ import { FirestoreError } from "firebase/firestore"
 import { FirebaseError } from "firebase/app"
 
 // This creates a new task and updates the user interface on errors
-export async function createTask(newTask: NewTaskData): Promise<void> {
+export async function createTask(newTask: NewTaskData): Promise<boolean> {
     try {
         if (newTask.name.trim() == "") {
             throw new Error("To create a new task, the title requires a non-empty field")
@@ -20,6 +20,8 @@ export async function createTask(newTask: NewTaskData): Promise<void> {
             planners: newTask.planners,
             dueDate: newTask.dueDate            
         });
+
+        return true;
     }
     catch (error) {
         if (error instanceof FirestoreError || error instanceof FirebaseError ) {
@@ -28,6 +30,8 @@ export async function createTask(newTask: NewTaskData): Promise<void> {
         else if (error instanceof Error) {
             toast.error(error.message)
         }
+
+        return false;
     }
 }
 

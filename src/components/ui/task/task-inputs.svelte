@@ -15,11 +15,13 @@
     })
     
     // This is a function for adding a new task and resetting the inputs
-    function addNewTask(): void {
-        createTask(newTask);
+    async function addNewTask(): Promise<void> {
+        let result = await createTask(newTask);
         
-        newTask.name = ""; 
-        newTask.dueDate = toCalendarDateTime(today(getLocalTimeZone()), new Time(0, 0))
+        if (result == true) {
+            newTask.name = ""; 
+            newTask.dueDate = toCalendarDateTime(today(getLocalTimeZone()), new Time(0, 0))
+        }
     }
 </script>
 
