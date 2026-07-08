@@ -69,7 +69,7 @@
 
 <Combobox.Root
     type="multiple"
-    open={true}
+    open={false}
 >
     <Combobox.Trigger class="{buttonStyle} rounded-lg w-full flex flex-col"> 
         <!-- A group of selected Planners -->
