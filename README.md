@@ -34,7 +34,9 @@
 
 <!-- PROJECT HEADER -->
 # Docket.
-Docket is a task management application that is created by Bennett Biju Mathew. This application aims to introduce tasks that belong within multiple planners. The goal of this project was to learn about the language of Svelte and refine my current skills. Alongside this, I wanted to solve the issue of tasks being stuck in one group, as it is hard to express the connection between multiple groups.
+Docket is a task management application created by Bennett Biju Mathew that reimagines how tasks are organized. Instead of restricting tasks to a single planner or category, Docket allows tasks to exist across multiple planners, making it easier to represent relationships between different projects, goals, and workflows.
+
+This project was built to explore the Svelte framework while further developing my front-end development skills. At the same time, it addresses a common limitation of traditional task management applications: tasks are often confined to a single group, making it difficult to capture how they relate to multiple contexts. By enabling tasks to belong to multiple planners, Docket provides a more flexible and connected approach to task organization.
 
 Image of the Task List View 
 <img width="1920" height="911" alt="Task List View of the Docket Application" src="https://github.com/user-attachments/assets/fd993cdc-e217-4927-b90e-ae9130267620" />
@@ -56,10 +58,12 @@ This allows users to filter tasks dynamically by toggling planners, making it ea
 
 ### Features
 - Authenticate users and have data for each user.
-- Ability to create, read, edit, and delete planners.
-- Ability to create, read, edit, and delete tasks.
-- View tasks based on the toggled planners that are related to the task
-
+- Ability to create, read, edit, and delete planners and tasks.
+- View tasks based on the toggled planners that are related to the task's selected planners
+- Filter and search through a list of planners and tasks
+- Provide update alerts for new releases within the Windows application.
+- Alert users based on upcoming due tasks.
+- Handle mass actions such as deleting multiple tasks or planners.
 
 ### Avaliable Platforms
 ![Windows][windows-image]
@@ -76,28 +80,18 @@ This allows users to filter tasks dynamically by toggling planners, making it ea
 [![Firestore][firestore-image]][firestore-url]
 
 <!-- GETTING STARTED -->
-## Getting Started
-This section is a work in progress, this will be added in later iterations of the application.
-
-### Prerequisites
-- Work In Progress
-
-### Installation
-- Work In Progress
-
-<!-- USAGE EXAMPLES -->
-## Usage
-This section is a work in progress, this will be added in later iterations of the application.
+## Downloading the application
+For the Windows and Android platform, the application can be downloaded through the [Releases](https://github.com/bennettbijumathew/docket-todo/releases/latest) of this repository.
 
 <!-- ROADMAP -->
 ## Roadmap
 This is a list of upcoming changes that may be planned for the future of the application. This may be bound to change in the future.
-- [ ] Add Notifications for Android and Windows. 
-- [ ] Refactor code to promote readability and clearer responsibilities,
-- [ ] Sorting and filtering for the Task and Planner View
-- [ ] Implement mass actions (such as delete or completing tasks) for the Task View
-- [ ] Creating a new calendar view
+- [x] Add Notifications for Android and Windows. 
+- [x] Refactor code to promote readability and clearer responsibilities,
+- [x] Sorting and filtering for the Task and Planner View
+- [x] Implement mass actions (such as delete or completing tasks) for the Task View
 - [ ] Update the application's aesthetic
+- [ ] Creating a new calendar view
 - [ ] Offline Support
 
 <!-- CONTACT -->

@@ -1,9 +1,23 @@
 # docket-todo
 
+## 2.5.5
+
+### Patch Changes
+
+- Created a new notification tile that show current status of being able to send notifications for Android.
+
+## 2.5.4
+
+### Patch Changes
+
+- Updated planner inputs to match the newly designed task inputs.
+- Task Editor now shows the full date picker rather than hiding a partial amount of it.
+- Added clearer error handling for the task and planner services, allowing for better user experience.
+
 ## 2.5.3
 
 - Refactored settings page to include a new accounts section
-  - New settings page is under the /user group which prevents non-users from adjusting the settings. 
+  - New settings page is under the /user group which prevents non-users from adjusting the settings.
   - Settings now accommodate multiple options such as 'Update' and the new 'Accounts' options.
 - Removed unused layout files
 
