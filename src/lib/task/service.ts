@@ -2,23 +2,33 @@ import { toast } from "svelte-sonner"
 import { NewTaskData } from "./type"
 import { deleteTask, MIN_PLANNERS, writeNewTask, appendPlannerToTask, detachPlannerFromTask, editName, editDate, editComplete } from "./repository"
 import { CalendarDateTime } from "@internationalized/date"
+import { FirestoreError } from "firebase/firestore"
+import { FirebaseError } from "firebase/app"
 
 // This creates a new task and updates the user interface on errors
-export function createTask(newTask: NewTaskData): void {
-    if (newTask.name.trim() == "") {
-        toast.error("To create a new task, the title requires a non-empty field")
-        return 
+export async function createTask(newTask: NewTaskData): Promise<void> {
+    try {
+        if (newTask.name.trim() == "") {
+            throw new Error("To create a new task, the title requires a non-empty field")
+        }
+        else if (newTask.planners.size <= MIN_PLANNERS) {
+            throw new Error(`To create a new task, the task requires more than ${MIN_PLANNERS} planners`)
+        }
+                
+        await writeNewTask({
+            name: newTask.name,
+            planners: newTask.planners,
+            dueDate: newTask.dueDate            
+        });
     }
-    else if (newTask.planners.size <= MIN_PLANNERS) {
-        toast.error("To create a new task, the task requires more than 0 planners")
-        return 
+    catch (error) {
+        if (error instanceof FirestoreError || error instanceof FirebaseError ) {
+            toast.error("Faced an error with creating a new task")
+        }
+        else if (error instanceof Error) {
+            toast.error(error.message)
+        }
     }
-            
-    writeNewTask({
-        name: newTask.name,
-        planners: newTask.planners,
-        dueDate: newTask.dueDate            
-    });
 }
 
 
@@ -27,15 +37,24 @@ type removeArgs = {
     id: string
 }
 
-export function removeTask({id}: removeArgs): void {
-    if (id.trim() == "") {
-        toast.error("The task could not be deleted");
-        return;
-    }
+export async function removeTask({id}: removeArgs): Promise<void> {
+    try {
+        if (id.trim() == "") {
+            throw new Error("The task could not be deleted");
+        }
 
-    deleteTask({
-        id: id
-    });
+        await deleteTask({
+            id: id
+        });
+    }
+    catch (error) {
+        if (error instanceof FirestoreError || error instanceof FirebaseError ) {
+            toast.error("Faced an error with deleting the task")
+        }
+        else if (error instanceof Error) {
+            toast.error(error.message)
+        }
+    }
 }
 
 
@@ -47,15 +66,24 @@ type addPlannerArgs = {
 
 export async function addPlannerToTask({taskId, newPlannerId}: addPlannerArgs): Promise<void> {
     // A guard clause to stop the function when there is no proper id.
-    if (taskId.trim() == "" || newPlannerId.trim() == "") {
-        toast.error("The planner could not be added to the task")
-        return
+    try {
+        if (taskId.trim() == "" || newPlannerId.trim() == "") {
+            throw new Error("The planner could not be added to the task")
+        }
+
+        await appendPlannerToTask({
+            taskId: taskId, 
+            newPlannerId: newPlannerId
+        })
     }
-    
-    appendPlannerToTask({
-        taskId: taskId, 
-        newPlannerId: newPlannerId
-    })
+    catch (error) {
+        if (error instanceof FirestoreError || error instanceof FirebaseError ) {
+            toast.error("Faced an error with adding a planner to the task")
+        }
+        else if (error instanceof Error) {
+            toast.error(error.message)
+        }
+    }    
 }
 
 
@@ -66,16 +94,24 @@ type removePlannerArgs = {
 }
 
 export async function removePlannerFromTask({taskId, oldPlannerId}: removePlannerArgs) {
-    // A guard clause to stop the function when there is no proper id.
-    if (taskId.trim() == "" || oldPlannerId.trim() == "") {
-        toast.error("The planner could not be removed from the task")
-        return
-    }
+    try {
+        if (taskId.trim() == "" || oldPlannerId.trim() == "") {
+            throw new Error("The planner could not be removed from the task")
+        }
 
-    detachPlannerFromTask({
-        taskId: taskId, 
-        oldPlannerId: oldPlannerId
-    })
+        await detachPlannerFromTask({
+            taskId: taskId, 
+            oldPlannerId: oldPlannerId
+        })
+    }
+    catch (error) {
+        if (error instanceof FirestoreError || error instanceof FirebaseError ) {
+            toast.error("Faced an error with removing a planner from the task")
+        }
+        else if (error instanceof Error) {
+            toast.error(error.message)
+        }
+    }    
 }
 
 
@@ -86,20 +122,29 @@ type updateNameArgs = {
 }
 
 export async function updateTaskName({id, name}: updateNameArgs): Promise<void> {
-    // A guard clause to stop the function when there is no task id or new name.
-    if (id.trim() == "") {
-        toast.error("The task's name could not be edited")
-        return
+    try {
+        // A guard clause to stop the function when there is no task id or new name.
+        if (id.trim() == "") {
+            throw new Error("The task's name could not be edited")
+        }
+        else if (name.trim() == "") {
+            throw new Error("To edit the task, the title requires a non-empty field")
+        }
+        
+        await editName({
+            id: id, 
+            name: name
+        })
     }
-    else if (name.trim() == "") {
-        toast.error("To edit the task, the title requires a non-empty field")
-        return 
-    }
+    catch (error) {
+        if (error instanceof FirestoreError || error instanceof FirebaseError ) {
+            toast.error("Faced an error with updating the name of a task")
+        }
+        else if (error instanceof Error) {
+            toast.error(error.message)
+        }
+    }    
 
-    editName({
-        id: id, 
-        name: name
-    })
 } 
 
 // This updates a task's date.
@@ -109,16 +154,25 @@ type updateDateArgs = {
 }
 
 export async function updateTaskDate({id, date}: updateDateArgs): Promise<void> {
-    // A guard clause to stop the function when there is no task id.
-    if (id.trim() == "") {
-        toast.error("The task's date could not be edited")
-        return
-    }
+    try {
+        // A guard clause to stop the function when there is no task id.
+        if (id.trim() == "") {
+            throw new Error("The task's date could not be edited")
+        }
 
-    editDate({
-        id: id, 
-        date: date
-    })
+        await editDate({
+            id: id, 
+            date: date
+        })
+    }
+    catch (error) {
+        if (error instanceof FirestoreError || error instanceof FirebaseError ) {
+            toast.error("Faced an error with updating the date of a task")
+        }
+        else if (error instanceof Error) {
+            toast.error(error.message)
+        }
+    }    
 } 
 
 // This changes a task to be complete status
@@ -128,14 +182,25 @@ type updateCompleteArgs = {
 }
 
 export async function updateTaskComplete({id, complete}: updateCompleteArgs): Promise<void> {
-    // A guard clause to stop the function when there is no task id.
-    if (id.trim() == "") {
-        toast.error("The task's completed status could not be edited")
-        return
+    try {
+        // A guard clause to stop the function when there is no task id.
+        if (id.trim() == "") {
+            toast.error("The task's completed status could not be edited")
+            return
+        }
+        
+        await editComplete({
+            id: id, 
+            complete: complete
+        })
     }
+    catch (error) {
+        if (error instanceof FirestoreError || error instanceof FirebaseError ) {
+            toast.error("Faced an error with updating the complete status of a task")
+        }
+        else if (error instanceof Error) {
+            toast.error(error.message)
+        }
+    }    
 
-    editComplete({
-        id: id, 
-        complete: complete
-    })
 } 
