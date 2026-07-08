@@ -67,15 +67,6 @@
         overflow-x-scroll
         sm:overflow-visible
     ">
-        <PlannerPicker 
-            bind:value={newTask.planners}
-            triggerClass="                    
-                bg-background-100 hover:bg-background-200 outline-background-400 rounded-lg py-1 px-2 
-                h-14 flex-auto text-sm
-                sm:h-8 sm:text-md
-            "
-        />
-
         <DatePicker 
             bind:value={newTask.dueDate}
             triggerClass="
@@ -83,6 +74,15 @@
                 h-14 w-48 text-sm
                 sm:h-8 sm:text-md
                 
+            "
+        />
+
+        <PlannerPicker 
+            bind:value={newTask.planners}
+            triggerClass="                    
+                bg-background-100 hover:bg-background-200 outline-background-400 rounded-lg py-1 px-2 
+                h-14 flex-auto text-sm
+                sm:h-8 sm:text-md
             "
         />
     </div>

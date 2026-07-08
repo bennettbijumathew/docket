@@ -55,8 +55,8 @@
 
     <DatePicker.Content 
         side="top" 
-        sideOffset={20} 
-        collisionPadding={25}
+        sideOffset={10} 
+        collisionPadding={3}
         class="bg-background shadow-md flex flex-col items-center rounded-lg p-3"
     >
         <DatePicker.Calendar>
