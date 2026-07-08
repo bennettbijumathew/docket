@@ -10,6 +10,7 @@
     import { Accordion } from "bits-ui";
     import { onMount, type Component } from "svelte";
     import AccountTile from "@/components/ui/settings/account-tile.svelte";
+    import NotificationTile from "@/components/ui/settings/notification-tile.svelte";
 
     /** A list of options within the settings, references a name and component */
     interface Options {
@@ -23,6 +24,10 @@
 
     if (getPlatform() == "windows") {
         options.push({ title: "Update", tile: UpdateTile } )
+    }
+
+    if (getPlatform() == "android") {
+        options.push({ title: "Notifications", tile: NotificationTile } )
     }
 
     /**     

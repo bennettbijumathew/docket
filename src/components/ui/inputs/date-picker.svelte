@@ -44,11 +44,7 @@
             <DatePicker.Trigger class="{triggerClass} flex justify-between items-center gap-x-2 cursor-pointer">
                 <Calendar class="size-4"/>
                 
-                <p class="
-                    text-right
-                    text-xs
-                    sm:text-sm
-                ">
+                <p class="text-right">
                     {#each segments as { value }}
                         {value.toUpperCase()}
                     {/each}
@@ -59,8 +55,8 @@
 
     <DatePicker.Content 
         side="top" 
-        sideOffset={20} 
-        collisionPadding={25}
+        sideOffset={10} 
+        collisionPadding={3}
         class="bg-background shadow-md flex flex-col items-center rounded-lg p-3"
     >
         <DatePicker.Calendar>

@@ -1,5 +1,5 @@
 import { QueryDocumentSnapshot } from "firebase/firestore";
-import { ColorKey } from "../../components/util/color";
+import { ColorKey } from "@/components/util/color";
 
 // The default type for planners.
 export interface Planner { 

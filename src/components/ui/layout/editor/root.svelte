@@ -15,7 +15,9 @@
     <section 
         transition:fly={{ x: '100%', duration: 300 }}
         class="
-            {getPlatform() == "windows" ? "pt-titlebar" : "pt-4"}
+            {getPlatform() == "windows" ? "pt-titlebar" : ""} 
+            {getPlatform() == "android" ? "pt-safe" : ""} 
+            {(getPlatform() != "android" || getPlatform() != "windows" ) ? "pt-4" : ""} 
             box-border bg-background flex flex-col justify-between h-full overflow-hidden fixed top-0 right-0 z-10
             w-75 
             sm:w-94
