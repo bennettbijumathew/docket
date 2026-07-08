@@ -1791,7 +1791,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@tauri-apps/plugin-notification@npm:~2":
+"@tauri-apps/plugin-notification@npm:^2.3.3":
   version: 2.3.3
   resolution: "@tauri-apps/plugin-notification@npm:2.3.3"
   dependencies:
@@ -2229,7 +2229,7 @@ __metadata:
     "@tailwindcss/vite": "npm:^4.1.18"
     "@tauri-apps/api": "npm:^2.11.0"
     "@tauri-apps/cli": "npm:^2.11.0"
-    "@tauri-apps/plugin-notification": "npm:~2"
+    "@tauri-apps/plugin-notification": "npm:^2.3.3"
     "@tauri-apps/plugin-opener": "npm:^2.5.4"
     "@tauri-apps/plugin-os": "npm:^2.3.2"
     "@tauri-apps/plugin-process": "npm:~2"
