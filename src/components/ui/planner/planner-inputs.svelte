@@ -21,63 +21,63 @@
 
         createPlanner(newPlanner)
         
-        newPlanner = {
-            name: "",
-            users: {},
-            color: "red" as ColorKey
-        }
+        newPlanner.name = ""
+        newPlanner.users = {}
     }
 </script>
         
 <!-- This area is the place to add planners -->
 <form
-    class="flex shrink-0 border-t border-background-300 p-4 gap-x-2"
+    class="
+        flex border-t border-background-300 p-4 gap-2
+        flex-col
+        sm:flex-row
+    "
     onsubmit={(e) => { 
         e.preventDefault(); 
         addNewPlanner();
     }}
 >   
-    <div class="
-        flex flex-row flex-1 bg-background-100 p-1 rounded-lg gap-1
-        flex-wrap
-        lg:flex-nowrap
-    ">
+    <div class="flex flex-row flex-1 gap-x-2">
         <input 
             type="text" 
-            class="min-h-8 flex-1 px-2 hover:bg-background-200 outline-background-400 rounded-lg"
+            class="
+                flex-1 px-1.5 rounded-lg bg-background-100 hover:bg-background-200 outline-background-400
+                h-10 order-first
+                sm:h-8 sm:order-last
+            "
             placeholder="Enter a new planner.."
             aria-required="true"
             required
             bind:value={newPlanner.name}
         >
 
-        <div class="
-            flex gap-2 justify-end overflow-x-visible
-            flex-1
-            sm:flex-none
-        ">
-            <ColorPicker 
-                value={newPlanner.color}
-                onChangeFn={(newColor) => newPlanner.color = newColor as ColorKey}
-                triggerClass="
-                    border border-background-300 hover:border-background-400 outline-background-400 rounded-lg p-1 
-                    w-full
-                    sm:w-40
-                "
-            />
-        </div>
+        <button 
+            class="
+                flex items-center justify-center bg-background-200 hover:bg-background-300 outline-background-400 rounded-lg 
+                size-10 order-last
+                sm:size-8 sm:order-first
+            "
+            aria-label="Add New Task" 
+            type="submit"
+        >
+            <Plus class="size-4"/>
+        </button>
     </div>
 
-    <button 
-        class="
-            flex items-center justify-center bg-background-100 hover:bg-background-200 rounded-lg 
-            w-14
-            sm:w-12
-            lg:w-10
-        "
-        aria-label="Add New Task" 
-        type="submit"
-    >
-        <Plus class="size-4"/>
-    </button>
+    <div class="
+        flex gap-x-2
+        overflow-x-scroll
+        sm:overflow-visible
+    ">
+        <ColorPicker 
+            value={newPlanner.color}
+            onChangeFn={(newColor) => newPlanner.color = newColor as ColorKey}
+            triggerClass="
+                bg-background-100 hover:bg-background-200 outline-background-400 rounded-lg py-1 px-1 
+                h-14 flex-auto text-sm
+                sm:h-8 sm:text-md
+            "
+        />
+    </div>
 </form>
