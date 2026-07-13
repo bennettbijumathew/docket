@@ -27,11 +27,7 @@
 
 <!-- This is a form that on submit adds a new task -->
 <form
-    class="
-        flex border-t border-background-300 p-4 gap-2
-        flex-col
-        sm:flex-row
-    "
+    class="main-inputs"
     onsubmit={(e) => { 
         e.preventDefault(); 
         addNewTask();
