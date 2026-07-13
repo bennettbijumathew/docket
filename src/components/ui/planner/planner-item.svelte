@@ -31,10 +31,7 @@
         ariaLabel="Button to view details about '{planner.name}'"
         triggerClasses="
             {plannerMenu.selectedPlanners.has(planner) ? 'border border-background-400' : 'border border-background-100'}
-            flex items-center shrink-0 py-0.5 rounded-md cursor-pointer bg-background-50 hover:bg-background-100
-            min-h-24 px-2 gap-2
-            sm:min-h-22 sm:px-3 sm:gap-3
-            lg:min-h-16
+            accordion-item-box accordion-planner
         "
     >
         <Checkbox 

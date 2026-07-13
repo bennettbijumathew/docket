@@ -4,12 +4,7 @@
     import { p } from "sv-router/generated";
 </script>
 
-<div class="
-    flex justify-between gap-x-3 text-left bg-background-50 p-3 rounded-lg
-    min-h-24 px-2 gap-2 flex-col
-    sm:min-h-22 sm:px-3 sm:gap-3 sm:flex-row sm:items-center
-    lg:min-h-16
-">
+<div class="accordion-item-box accordion-setting">
     <div class="
         flex items-center
         flex-1

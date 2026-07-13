@@ -51,11 +51,7 @@
         <AccordionItem 
             title={group.title}
             subText="({group.list.length})"
-            triggerClasses="
-                bg-background-100 hover:bg-background-200 rounded-md mb-1 
-                w-full py-1.5
-                lg:w-auto lg:py-0.5
-            "
+            triggerClasses="accordion-trigger"
             contentClasses="flex flex-col gap-4 mb-5"
         >   
             <!-- In each task item, context menus are provided to edit the planner -->

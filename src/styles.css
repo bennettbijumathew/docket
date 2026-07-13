@@ -43,15 +43,43 @@
 
 /** Classes that are used to design similar components of the application */
 .main {
-    @apply flex flex-1 flex-col min-h-0 min-w-0 pt-safe  lg:flex-3 
+    @apply flex flex-1 flex-col min-h-0 min-w-0 pt-safe  
+            lg:flex-3 
 }
 
 .main-header {
-    @apply flex justify-between border-b border-background-300 p-4 shrink-0  flex-col gap-2  lg:flex-row
+    @apply flex justify-between border-b border-background-300 p-4 shrink-0  
+        flex-col gap-2  
+        lg:flex-row
 }
 
 .main-inputs {
-    @apply flex border-t border-background-300 p-4 gap-2  flex-col  sm:flex-row
+    @apply flex border-t border-background-300 p-4 gap-2  
+        flex-col  
+        sm:flex-row
+}
+
+.accordion-trigger {
+    @apply bg-background-100 hover:bg-background-200 rounded-md mb-1 
+        w-full py-1.5
+        lg:w-auto lg:py-0.5
+}
+
+.accordion-item-box {
+    @apply flex shrink-0 py-1 rounded-md cursor-pointer bg-background-50 hover:bg-background-100
+}
+
+.accordion-task, .accordion-planner {
+    @apply items-center
+        min-h-24 px-2 gap-2
+        sm:min-h-22 sm:px-3 sm:gap-3
+        lg:min-h-16
+}
+
+.accordion-setting {
+    @apply justify-between gap-x-3 text-left p-3
+        px-2 gap-2 flex-col
+        sm:flex-row sm:items-center
 }
 
 

@@ -22,13 +22,13 @@
         { title: "Account", tile: AccountTile }
     ]
 
-    if (getPlatform() == "windows") {
+    // if (getPlatform() == "windows") {
         options.push({ title: "Update", tile: UpdateTile } )
-    }
+    // }
 
-    if (getPlatform() == "android") {
+    // if (getPlatform() == "android") {
         options.push({ title: "Notifications", tile: NotificationTile } )
-    }
+    // }
 
     /**     
         Opened accordions are handled by identification of strings, so on loading, 
@@ -81,11 +81,7 @@
 
                 <AccordionItem 
                     title={option.title}
-                    triggerClasses="
-                        bg-background-100 hover:bg-background-200 rounded-md mb-1 
-                        w-full py-1.5
-                        lg:w-auto lg:py-0.5
-                    "
+                    triggerClasses="accordion-trigger"
                     contentClasses="flex flex-col gap-4 mb-5"
                 >        
                     <OptionTile/>
