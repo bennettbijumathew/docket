@@ -79,7 +79,7 @@
 .accordion-setting {
     @apply justify-between gap-x-3 text-left p-3
         px-2 gap-2 flex-col
-        sm:flex-row sm:items-center
+        sm:flex-row sm:items-center sm:px-3
 }
 
 

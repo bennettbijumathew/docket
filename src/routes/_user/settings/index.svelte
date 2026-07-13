@@ -22,13 +22,13 @@
         { title: "Account", tile: AccountTile }
     ]
 
-    // if (getPlatform() == "windows") {
+    if (getPlatform() == "windows") {
         options.push({ title: "Update", tile: UpdateTile } )
-    // }
+    }
 
-    // if (getPlatform() == "android") {
+    if (getPlatform() == "android") {
         options.push({ title: "Notifications", tile: NotificationTile } )
-    // }
+    }
 
     /**     
         Opened accordions are handled by identification of strings, so on loading, 
