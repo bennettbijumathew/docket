@@ -29,17 +29,12 @@
 <TaskSidebar/>
 
 <!-- This is main part of the application where the task list resides. -->
-<section class="
-    flex flex-1 flex-col min-h-0 min-w-0 pt-safe
-    lg:flex-3
-">
+<section class="main">
     <!-- The header that holds the title and buttons for toggling the sidebar, searching and filtering tasks.  -->
     <header 
         class="
             {getPlatform() == "windows" ? "pt-titlebar" : ""}
-            flex justify-between border-b border-background-300 p-4 shrink-0 
-            flex-col gap-2
-            lg:flex-row sm:gap-2
+            main-header 
         "
     >
         <!-- The title and sidebar toggle -->

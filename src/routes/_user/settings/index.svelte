@@ -45,17 +45,12 @@
 <SidebarRoot/>
 
 <!-- This is the main section of the page -->
-<section class="
-    flex flex-1 flex-col min-h-0 min-w-0 pt-safe
-    lg:flex-3
-">
+<section class="main">
     <!-- Header of the application with a sidebar toggle -->
     <header 
         class="
             {getPlatform() == "windows" ? "pt-titlebar" : ""}
-            flex justify-between border-b border-background-300 p-4 shrink-0 
-            flex-col gap-2
-            lg:flex-row sm:gap-2
+            main-header
         "
     >
         <!-- The title and sidebar toggle -->
