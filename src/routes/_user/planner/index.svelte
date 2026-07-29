@@ -31,7 +31,8 @@
     <!-- The header that holds the title and buttons for toggling the sidebar, searching and filtering planners.  -->
     <header 
         class="
-            {getPlatform() == "windows" ? "pt-titlebar" : ""}
+            {getPlatform() == "windows" ? "pt-titlebar" : "pt-4"}
+            {getPlatform() == "android" ? "pt-safe" : ""} 
             main-header        
         "
     >

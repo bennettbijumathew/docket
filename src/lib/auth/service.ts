@@ -15,10 +15,10 @@ type listenAuthArgs = {
 }
 
 export function listenForAuth({authenticatedFn, unauthenticatedFn}: listenAuthArgs) {
+    app.loading = true
+    
     // The listenAuth function tracks the current user using Firebase's listener. 
     return listenAuth((user) => {
-        app.loading = false
-
         if (user) {
             authentication.status = "authenticated";
             authentication.user = user;
@@ -31,7 +31,9 @@ export function listenForAuth({authenticatedFn, unauthenticatedFn}: listenAuthAr
 
             unauthenticatedFn();
         }
-    })
+
+        app.loading = false
+    })    
 }
 
 

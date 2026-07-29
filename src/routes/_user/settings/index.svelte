@@ -49,8 +49,9 @@
     <!-- Header of the application with a sidebar toggle -->
     <header 
         class="
-            {getPlatform() == "windows" ? "mt-titlebar" : ""}
-            main-header
+            {getPlatform() == "windows" ? "pt-titlebar" : "pt-4"}
+            {getPlatform() == "android" ? "pt-safe" : ""} 
+            main-header        
         "
     >
         <!-- The title and sidebar toggle -->
