@@ -33,8 +33,8 @@
     <!-- The header that holds the title and buttons for toggling the sidebar, searching and filtering tasks.  -->
     <header 
         class="
-            {getPlatform() == "windows" ? "pt-titlebar" : ""}
-            main-header 
+            main-header
+            {getPlatform() == "windows" ? "mt-titlebar" : ""}
         "
     >
         <!-- The title and sidebar toggle -->

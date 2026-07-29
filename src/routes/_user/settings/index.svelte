@@ -49,7 +49,7 @@
     <!-- Header of the application with a sidebar toggle -->
     <header 
         class="
-            {getPlatform() == "windows" ? "pt-titlebar" : ""}
+            {getPlatform() == "windows" ? "mt-titlebar" : ""}
             main-header
         "
     >
