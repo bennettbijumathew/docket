@@ -15,13 +15,18 @@ export function startPlannerTasks({userId}: startArgs) {
     unSubFromPlannerUpdates?.()
     unSubFromTaskUpdates?.()
     
+    planners.isLoaded = false
+    tasks.isLoaded = false
+
     unSubFromPlannerUpdates = listenPlanners(userId, (newPlanners) => {
         planners.all = newPlanners;
-        
+        planners.isLoaded = true
+
         unSubFromTaskUpdates?.()
 
         unSubFromTaskUpdates = listenTasks(planners.ids, (newTasks) => {
             tasks.all = newTasks
+            tasks.isLoaded = true
             notifications.syncTasks(newTasks)
         })
     })

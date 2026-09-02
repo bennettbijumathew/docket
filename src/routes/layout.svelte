@@ -1,15 +1,16 @@
 <script lang="ts">
-    import { app } from '@/lib/app/main.svelte';
     import { isAndroidPermissionsGranted } from '@/lib/notification/repository';
+    import Loading from '@/components/ui/layout/page-state/loading.svelte';
+    import { onDestroy, onMount, type Snippet } from 'svelte';  
     import { getPlatform } from '@/lib/shared/platform';
     import { check } from '@tauri-apps/plugin-updater';
+    import { app } from '@/lib/app/main.svelte';
     import { p } from 'sv-router/generated';
-    import { onDestroy, onMount, type Snippet } from 'svelte';  
 
 	let { children }: { children: Snippet } = $props();
 
     let isUpdateAvailable: boolean = $state(false);
-
+    
     // On the page being mounted to the DOM, the application starts.
     onMount(async () => {
         app.start();
@@ -19,6 +20,7 @@
             isUpdateAvailable = await check() !== null ? true : false;
         }
 
+        // This checks if user wants to have notifications for the android windows application. 
         if (getPlatform() === "android") {
             isAndroidPermissionsGranted()
         }
@@ -31,7 +33,11 @@
 </script>
 
 <!-- VIEW -->
-{@render children()}
+{#if app.loading == true}
+    <Loading/>
+{:else}
+    {@render children()}
+{/if}
 
 {#if isUpdateAvailable}
     <section class="flex justify-between items-center px-3 py-1.5 bg-red-200">

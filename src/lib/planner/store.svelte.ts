@@ -7,6 +7,7 @@ class PlannerStore {
     #hiddenPlanners: Planner[] = $derived(this.#list.filter((planner) => planner.visible === false))
     #onlyIdPlanners: string[] = $derived(this.#visiblePlanners.map((planner) => planner.id));
     #sort: PlannerSort = $state("visible")
+    isLoaded: boolean = $state(false) 
 
     set all(newList: Planner[]) {
         this.#list = newList;

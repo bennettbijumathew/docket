@@ -1,11 +1,14 @@
 <script lang="ts">
     import { sidebar, SIDEBAR_KEY } from "@/components/ui/layout/sidebar/util.svelte";
+    import { app } from "@/lib/app/main.svelte";
     import { authentication } from "@/lib/auth/store.svelte";
+    import { planners } from "@/lib/planner/store.svelte";
+    import { tasks } from "@/lib/task/store.svelte";
     import { ArrowRight } from "@lucide/svelte";
     import { navigate, p } from "sv-router/generated";
 
     $effect(() => {
-        if (authentication.status === "authenticated") {
+        if (authentication.status === "authenticated" && app.loading === false && tasks.isLoaded == true && planners.isLoaded == true) {
             navigate("/task", { 
                 search: {
                     [SIDEBAR_KEY]: sidebar.isOpen
@@ -44,5 +47,4 @@
             <ArrowRight class="size-4"/>
         </a>
     {/if}
-
 </main>

@@ -1,11 +1,13 @@
 <script lang="ts">
+    import { type RouteDetails, type RouteNames, routes } from "@/components/util/routes";
+    import { X, Maximize2, Minimize2, Minus, ArrowLeft, ArrowRight } from '@lucide/svelte';
+    import { getCurrentWindow } from '@tauri-apps/api/window';
+    import { getPlatform } from "@/lib/shared/platform";
+    import { navigate } from "sv-router/generated";
+    import { onDestroy, onMount } from "svelte";
+    import { app } from "@/lib/app/main.svelte";
 	import { Router } from "sv-router";
 	import "sv-router/generated";
-    import { getCurrentWindow } from '@tauri-apps/api/window';
-    import { X, Maximize2, Minimize2, Minus, ArrowLeft, ArrowRight } from '@lucide/svelte';
-    import { routes } from "./components/util/routes";
-    import { navigate } from "sv-router/generated";
-    import { getPlatform } from "@/lib/shared/platform";
     
     // This tracks the state of the application's window maximized state.
     let maximizedState: boolean = $state(false) 
@@ -15,6 +17,14 @@
             maximizedState = item
         }));
     }
+
+
+    /** Routes that are displayed on the sidebar. */
+    const sidebarRoutes: Map<RouteNames, RouteDetails>  = new Map();
+
+    sidebarRoutes.set("Planner", routes.get("Planner")!)
+    sidebarRoutes.set("Task", routes.get("Task")!)
+    sidebarRoutes.set("Settings", routes.get("Settings")!)
 </script>
 
 {#if getPlatform() === "windows"}
@@ -43,7 +53,7 @@
             sm:flex
             *:h-titlebar *:py-1.5 *:px-2 *:cursor-pointer *:hover:bg-background-100/60 *:text-xs
         ">
-            {#each routes as [name, {link}]}
+            {#each sidebarRoutes as [name, {link}]}
                 <a 
                     href={link}
                 >

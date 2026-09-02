@@ -3,9 +3,10 @@
     import { authentication } from '@/lib/auth/store.svelte';
 	import { type Snippet } from 'svelte';  
     import { Toaster } from 'svelte-sonner'
-    import { ArrowRight, House, LoaderCircle } from '@lucide/svelte';
-    import { app } from '@/lib/app/main.svelte';
+    import { ArrowRight, House } from '@lucide/svelte';
     import { getPlatform } from '@/lib/shared/platform';
+    import { app } from "@/lib/app/main.svelte";
+    import Loading from "@/components/ui/layout/page-state/loading.svelte";
 
 	let { children }: { children: Snippet } = $props();
 </script>
@@ -73,7 +74,5 @@
         </main>
     {/if}
 {:else}
-    <main class="flex flex-1 items-center justify-center">
-        <LoaderCircle class="animate-spin"/>
-    </main>
+    <Loading/>
 {/if}

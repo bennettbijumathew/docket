@@ -3,6 +3,7 @@ import { type TaskSort, type Task, taskSortList } from "@/lib/task/type";
 export class TaskStore {
     #list: Task[] = $state([])
     #sort: TaskSort = $state("completed")
+    isLoaded: boolean = $state(false) 
 
     set all(newList: Task[]) {
         this.#list = newList;
